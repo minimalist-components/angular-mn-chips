@@ -23,22 +23,26 @@ function mnChipsDirective($parse, $timeout) {
     const modelApplied = angular.equals(element[0].value, modelValue)
 
     if (!modelApplied) {
-      $timeout(() => {
-        element[0].value = modelValue
-        $parse(attributes.ngModel).assign(scope, element[0].value)
-      }, 0)
+      element[0].value = modelValue
+      applyNgModel()
     }
 
-    element.on('change', () => {
-      $timeout(() => {
-        $parse(attributes.ngModel).assign(scope, element[0].value)
-        scope.$apply()
-      }, 0)
-    })
+    // scope.$watchCollection(() => ngModel.$modelValue, value => {
+    //   console.log(value)
+    // })
+
+    element.on('change', () => applyNgModel())
 
     // const dirtyLabel = element[0].querySelector('label + label')
     // if (dirtyLabel) {
     //   element[0].removeChild(dirtyLabel)
     // }
+
+    function applyNgModel() {
+      $timeout(() => {
+        $parse(attributes.ngModel).assign(scope, element[0].value)
+        scope.$apply()
+      }, 0)
+    }
   }
 }

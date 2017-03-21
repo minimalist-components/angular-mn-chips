@@ -29,6 +29,7 @@ body(ng-controller='IndexController as controller')
         mn-chips.flex(placeholder='Houses' ng-model='controller.houses')
         p {{ controller.names }}
         mn-chips.flex(placeholder='Names' ng-model='controller.names')
+        //- button(ng-click='controller.add()') add
 
   .docs.mn-layout-container
     mn-code.sh.
@@ -56,6 +57,8 @@ body(ng-controller='IndexController as controller')
     script(src='/dist/angular-mn-chips.js')
 
   script.
+    var houses = document.querySelector('mn-chips[ng-model="controller.houses"]')
+    var names = document.querySelector('mn-chips[ng-model="controller.names"]')
     angular.module('app', [
       'mn-chips',
     ])
@@ -65,6 +68,22 @@ body(ng-controller='IndexController as controller')
       .controller('IndexController', IndexController);
 
     function IndexController() {
-      this.houses = []
+      this.houses = ['stark']
+
+      //- this.add = add
+
+      //- function add() {
+      //-   const houses = [
+      //-     'stark', 
+      //-     'lannister', 
+      //-     'baratheon',
+      //-     'tully',
+      //-     'targaryen',
+      //-     'dotraki',
+      //-   ]
+      //-   const random = parseInt(Math.random() * houses.length)
+      //-   //- this.houses = [houses[random]]
+      //-   this.houses.push(houses[random])
+      //- }
     }
 

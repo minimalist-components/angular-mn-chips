@@ -17,7 +17,9 @@ angular.module('app', [
 ]);
 </mn-code><p>And then, in your html, you can use the tag</p><mn-code class="html"><!-- checkbox -->
 <mn-chips ng-model="house"></mn-chips>
-</mn-code><p>For more details check <a href="https://github.com/minimalist-components/mn-chips">mn-chips docs</a>.</p></div><script src="https://rawgit.com/minimalist-components/angular-mn-chips/master/docs/vendor.js"></script><script src="https://rawgit.com/minimalist-components/angular-mn-chips/master/dist/angular-mn-chips.js"></script><script>angular.module('app', [
+</mn-code><p>For more details check <a href="https://github.com/minimalist-components/mn-chips">mn-chips docs</a>.</p></div><script src="https://rawgit.com/minimalist-components/angular-mn-chips/master/docs/vendor.js"></script><script src="https://rawgit.com/minimalist-components/angular-mn-chips/master/dist/angular-mn-chips.js"></script><script>var houses = document.querySelector('mn-chips[ng-model="controller.houses"]')
+var names = document.querySelector('mn-chips[ng-model="controller.names"]')
+angular.module('app', [
   'mn-chips',
 ])
 
@@ -26,5 +28,21 @@ angular
   .controller('IndexController', IndexController);
 
 function IndexController() {
-  this.houses = []
+  this.houses = ['stark']
+
+  //- this.add = add
+
+  //- function add() {
+  //-   const houses = [
+  //-     'stark', 
+  //-     'lannister', 
+  //-     'baratheon',
+  //-     'tully',
+  //-     'targaryen',
+  //-     'dotraki',
+  //-   ]
+  //-   const random = parseInt(Math.random() * houses.length)
+  //-   //- this.houses = [houses[random]]
+  //-   this.houses.push(houses[random])
+  //- }
 }</script></body>
