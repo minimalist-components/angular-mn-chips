@@ -2,7 +2,7 @@ html(ng-app='app')
   meta(name='viewport' content='width=device-width, user-scalable=no')
 
   block styles
-    link(rel='stylesheet' href='docs/vendor.css')
+    link(rel='stylesheet' href='/docs/vendor.css')
 
   style.
     mn-chips {
@@ -52,8 +52,8 @@ body(ng-controller='IndexController as controller')
     p For more details check <a href="https://github.com/minimalist-components/mn-chips">mn-chips docs</a>.
 
   block scripts
-    script(src='docs/vendor.js')
-    script(src='dist/angular-mn-chips.js')
+    script(src='/docs/vendor.js')
+    script(src='/dist/angular-mn-chips.js')
 
   script.
     angular.module('app', [
