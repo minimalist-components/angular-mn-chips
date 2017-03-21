@@ -25,9 +25,12 @@ body(ng-controller='IndexController as controller')
   .mn-layout-fullscreen.mn-layout-centered
     .mn-layout-container
       form.mn-layout-column
-        p {{ controller.houses }}
+        //- div(ng-repeat='list in controller.lists')
+          p {{ list.key }}: {{ controller[list.key] }}
+          mn-chips.flex(placeholder='{{ list.name }}' name='{{ list.key }}' ng-model='controller[list.key]')
+        //- p {{ controller.houses }}
         mn-chips.flex(placeholder='Houses' ng-model='controller.houses')
-        p {{ controller.names }}
+        //- p {{ controller.names }}
         mn-chips.flex(placeholder='Names' ng-model='controller.names')
         //- button(ng-click='controller.add()') add
 
@@ -68,6 +71,10 @@ body(ng-controller='IndexController as controller')
       .controller('IndexController', IndexController);
 
     function IndexController() {
+      this.lists = [
+        {key: 'houses', name: 'Houses'},     
+        {key: 'names', name: 'Names'}
+      ]
       this.houses = ['stark']
 
       //- this.add = add

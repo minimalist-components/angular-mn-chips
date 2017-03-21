@@ -33,16 +33,26 @@ function mnChipsDirective($parse, $timeout) {
 
     element.on('change', () => applyNgModel())
 
-    // const dirtyLabel = element[0].querySelector('label + label')
-    // if (dirtyLabel) {
-    //   element[0].removeChild(dirtyLabel)
-    // }
-
     function applyNgModel() {
       $timeout(() => {
+        const option = element[0].querySelector('mn-option:last-child')
+        const name = element[0].getAttribute('name')
+        if (option) {
+          option.setAttribute('name', name)
+        }
         $parse(attributes.ngModel).assign(scope, element[0].value)
         scope.$apply()
       }, 0)
+    }
+
+    // to allow ngRepeat
+    const dirtyInput = element[0].querySelector('input + input')
+    const dirtyValues = element[0].querySelector('.values + .values')
+    if (dirtyInput) {
+      element[0].removeChild(dirtyInput)
+    }
+    if (dirtyValues) {
+      element[0].removeChild(element[0].querySelector('.values'))
     }
   }
 }
