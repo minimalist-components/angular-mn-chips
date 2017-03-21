@@ -5,28 +5,17 @@ html(ng-app='app')
     link(rel='stylesheet' href='docs/vendor.css')
 
   style.
-    .demo {
-      margin-bottom: 5em;
+    mn-chips {
+      font-size: 1.2rem;
     }
 
-    .demo .mn-layout-container > div {
-      margin: 0 auto;
-    }
-
-    @media (max-width: 599px) {
-      mn-chips {text-align: center}
-    }
+    form {width: 100%}
 
     @media (min-width: 600px) {
-      .demo .mn-layout-container > div {
-        width: 80%;
+      form {
+        padding: 100px;
+        box-sizing: border-box;
       }
-    }
-
-    .demo h3 {
-      margin-top: 7em;
-      padding-bottom: .5em;
-      color: #868e96;
     }
 
 body(ng-controller='IndexController as controller')
@@ -36,9 +25,10 @@ body(ng-controller='IndexController as controller')
   .mn-layout-fullscreen.mn-layout-centered
     .mn-layout-container
       form.mn-layout-column
-        mn-chips.flex(placeholder='Houses' name='houses')
-
-        mn-chips.flex(placeholder='Names' name='names')
+        p {{ controller.houses }}
+        mn-chips.flex(placeholder='Houses' ng-model='controller.houses')
+        p {{ controller.names }}
+        mn-chips.flex(placeholder='Names' ng-model='controller.names')
 
   .docs.mn-layout-container
     mn-code.sh.
@@ -75,12 +65,6 @@ body(ng-controller='IndexController as controller')
       .controller('IndexController', IndexController);
 
     function IndexController() {
-      this.list = 'stark'
-      this.list2 = ['daenerys', 'cersei']
-      this.list3 = ['daenerys', 'robert']
-      this.list4 = 'daenerys'
-
-      this.obj = {name: 'darlan'}
-      this.array = [{name: 'darlan'}, {name: 'clara'}]
+      this.houses = []
     }
 
