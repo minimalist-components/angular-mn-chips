@@ -1,0 +1,86 @@
+html(ng-app='app')
+  meta(name='viewport' content='width=device-width, user-scalable=no')
+
+  block styles
+    link(rel='stylesheet' href='docs/vendor.css')
+
+  style.
+    .demo {
+      margin-bottom: 5em;
+    }
+
+    .demo .mn-layout-container > div {
+      margin: 0 auto;
+    }
+
+    @media (max-width: 599px) {
+      mn-chips {text-align: center}
+    }
+
+    @media (min-width: 600px) {
+      .demo .mn-layout-container > div {
+        width: 80%;
+      }
+    }
+
+    .demo h3 {
+      margin-top: 7em;
+      padding-bottom: .5em;
+      color: #868e96;
+    }
+
+body(ng-controller='IndexController as controller')
+  h2 angular-mn-chips
+  include github-corner
+
+  .mn-layout-fullscreen.mn-layout-centered
+    .mn-layout-container
+      form.mn-layout-column
+        mn-chips.flex(placeholder='Houses' name='houses')
+
+        mn-chips.flex(placeholder='Names' name='names')
+
+  .docs.mn-layout-container
+    mn-code.sh.
+      npm install --save angular-mn-chips
+
+    p And bundle dependencies and main files in <strong>dist/</strong> with your preferred tool.
+
+    h3 usage
+    mn-code.js.
+      // add dependency in you module
+      angular.module('app', [
+        'mn-chips'
+      ]);
+
+    p And then, in your html, you can use the tag
+
+    mn-code.html.
+      <!-- checkbox -->
+      <mn-chips ng-model="house"></mn-chips>
+
+    p For more details check <a href="https://github.com/minimalist-components/mn-chips">mn-chips docs</a>.
+
+  block scripts
+    script(src='docs/vendor.js')
+    script(src='dist/angular-mn-chips.js')
+
+  script.
+    angular.module('app', [
+      'mn-chips',
+    ])
+
+    angular
+      .module('app')
+      .controller('IndexController', IndexController);
+
+    function IndexController() {
+      this.list = 'stark'
+      this.list2 = ['daenerys', 'cersei']
+      this.list3 = ['daenerys', 'robert']
+      this.list4 = 'daenerys'
+
+      this.obj = {name: 'darlan'}
+      this.array = [{name: 'darlan'}, {name: 'clara'}]
+    }
+
