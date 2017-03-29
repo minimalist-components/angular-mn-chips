@@ -1,6 +1,6 @@
 {
   "name": "angular-mn-chips",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "an angular directive to mn-chips",
   "main": "dist/angular-mn-chips.js",
   "files": [
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "angular": "^1.6.1",
-    "mn-chips": "~0.0.5"
+    "mn-chips": "~0.0.7"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",
